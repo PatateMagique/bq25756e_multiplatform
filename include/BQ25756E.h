@@ -575,8 +575,8 @@ struct BQ25756E_Config {
 class BQ25756E {
 private:
     // Hardware dependant settings
-    uint8_t address;         // I2C address of the charger
-    uint16_t switching_freq;  // Switching frequency of the charger in kHz
+    uint8_t address;             // I2C address of the charger
+    uint16_t switching_freq;     // Switching frequency of the charger in kHz
     uint8_t regulation_voltage;  // Regulation voltage of the charger in V
     uint16_t max_charge_current; // Maximum charge current in mA
     uint16_t max_input_current;  // Maximum input current in mA
@@ -587,7 +587,9 @@ private:
     BQ25756E_Config config;
 
     // Debug port
-    Stream* _debugPort = nullptr;
+    #ifdef BQ25756E_PLATFORM_ARDUINO
+        Stream* _debugPort = nullptr;
+    #endif
 
     // Private functions
     void chargPrint(const char* message);
@@ -709,7 +711,9 @@ public:
 
     // --- Other Functions ---
     void printChargerConfig(bool initial_config = false);
-    void setDebugStream(Stream* debugPort);
+    #ifdef BQ25756E_PLATFORM_ARDUINO
+        void setDebugStream(Stream* debugPort);
+    #endif
     void printByteAsBinary(uint8_t value);
     void print2BytesAsBinary(uint16_t value);
 };
