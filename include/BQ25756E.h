@@ -9,8 +9,8 @@
 #ifndef BQ25756E_H
 #define BQ25756E_H
 
-#include "drv8214_platform_config.h" // For platform detection
-#include "drv8214_platform_i2c.h"    // For abstracted I2C functions
+#include "bq25756e_platform_config.h" // For platform detection
+#include "bq25756e_platform_i2c.h"    // For abstracted I2C functions
 
 // --- REGISTER DEFINITIONS ---
 // (Refer to the datasheet for detailed register information)
